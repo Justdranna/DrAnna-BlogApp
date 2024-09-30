@@ -1,0 +1,36 @@
+<%- include("partials/_header") %>
+
+    <div style="background-color: #f0ebeb; padding:50px; margin:0px 40px; border-radius: 10px;">
+        <h2 style="border-left: 5px solid dodgerblue; padding-left:10px; margin-left: 10px; font-size: 40px;">Welcome to my Blog Site </h2>
+        <p style="font-size: 25px;"><b>DrAnna's blog is where you get any trending information</b></p>
+        <a class="bloglink" href="/create-blog">Make a blog</a>
+    
+        </div>
+    
+        <div style="margin: 30px; padding:0px 40px; text-align: center;">
+    
+        <!-- <img style="border:4px solid black; border-radius: 4px;" src="images/care.jpg" height="350" width="350">
+        <img style="border:4px solid black; border-radius: 4px;" src="images/garden.jpg" height="350" width="350">
+        <img style="border:4px solid black; border-radius: 4px;" src="images/rename.jpg" height="350" width="350"> -->
+        </div>
+    <% if (blogs.length === 0){ %>
+        <h2 style="text-align: center;">There are no blogs yet</h2>
+    <% }else{%>
+        <h2 style="text-align: center;">These are the available blogs</h2>
+        <ul class="bloglist">
+            <% blogs.forEach(blog => { %>
+                <li>
+                    <img src="<%= blog.imageurl %>" alt="Image NOt Found">
+                    <div>
+                        <h1><%= blog.name %></h1>
+                        <p><%= blog.description.slice(0, 50) %>...</p>
+                        <p><%= moment(blog.dateCreated).fromNow() %></p>
+                        <div style="text-align: center">
+                            <a class="bloglink" href="/blogs/<%= blog._id %>">READ MORE</a>
+                        </div>
+                    </div>
+                </li>
+            <%})%>
+        </ul>
+    <%} %>
+<%- include("partials/_footer") %>

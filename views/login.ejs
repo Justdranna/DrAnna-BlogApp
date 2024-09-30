@@ -1,0 +1,22 @@
+    <%- include("partials/_header") %>
+
+    <h2 style="text-align: center;">Please login to your account</h2>
+    <div id="emoji" style="text-align: center;">
+        <img src="/images/rotatingemoji.gif" width="100" height="100" alt="emoji could not be found">
+    </div>
+    <form method="POST" action="/accounts/login" class="loginform">
+        <label>Username or email</label> 
+        <br>
+        <input type ="text" name="username" placeholder="Enter your username"/>
+        <br>
+        <label>Password</label>
+        <br>
+        <input type ="password" name="password" placeholder="Enter your password"/>
+        <br>
+
+        <button><i class="fa fa-user" style="color: white"></i> Login</button>
+        
+
+    </form>
+
+    <%- include("partials/_footer") %>

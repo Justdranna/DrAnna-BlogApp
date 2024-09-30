@@ -1,0 +1,42 @@
+
+    <%- include("partials/_header") %>
+    <h1 style="text-align: center;">Sign up to use the Website</h1>
+    <form class="registerform" method="POST" action="/accounts/register">
+        <label> <b>Firstname</b></label>
+        <br>
+        <input type="text" name="firstname" placeholder="Enter your firstname"/>
+        <br>
+        <label> <b>Lastname</b></label>
+        <br>
+        <input type="text" name="lastname" placeholder="Enter your lastname"/>
+        <br>
+        <label> <b>Username</b></label>
+        <br>
+        <input type="text" name="username" placeholder="Enter your username"/>
+        <br>
+
+        <label> <b>password</b></label>
+        <br>
+        <input type="text" name="password" placeholder="Enter your password"/>
+        <br>
+
+        <label><b>Confirm Password</b></label>
+        <br>
+        <input type="password" name="confirmpassword" placeholder="Confirm Password"/>
+        <br>
+
+        <label><b>Email</b></label>
+        <br>
+        <input type="email" name="email" placeholder="Enter your email"/>
+        <br>
+        <label><b>age</b></label>
+        <br>
+        <input type="number" name="age" placeholder="Enter your age"/>
+        <br>
+        <button>Register</button>
+
+
+
+    </form>
+    
+    <%- include("partials/_footer") %>

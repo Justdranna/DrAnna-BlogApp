@@ -1,0 +1,9 @@
+<%- include("partials/_header") %>
+<h1 style="text-align: center;">Create a blog</h1>
+<form class="blogcreate-form" method="POST" action="/create-blog">
+    <input type="text" name="title" placeholder="Enter the name...">
+    <textarea rows="10" name="description" placeholder="Enter blog description"></textarea>
+    <input type="text" name="imageurl" placeholder="Enter url of the image...">
+    <button>create</button>
+</form>
+<%- include("partials/_footer") %>

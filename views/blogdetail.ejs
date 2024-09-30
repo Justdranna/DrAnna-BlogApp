@@ -1,0 +1,62 @@
+<%- include("partials/_header") %>
+    <div class="blogcontainer">
+            <img src="<%= blog.imageurl %>" alt="Image NOt Found">
+        <div class="blogcaption">
+            <h1><%= blog.name %></h1>
+            <p><%= blog.description %></p>
+            <p class="blogtime"><%= moment(blog.dateCreated).format("YYYY MM DD HH:mm:ss") %>(<%= moment(blog.dateCreated).fromNow() %>)
+            </p>
+            <div style="text-align: center; margin-top: 29px;">
+                <a class="deleteblog" href="/blogs/<%= blog.id %>/delete">Delete</a>
+                <button class="updateblog">Update</button>
+            </div>
+            <form class="comment-form" method="POST" action="/blogs/<%= blog._id %>/create-comment">
+                <input type="text" name="commenter" placeholder="your name...">
+                <input type="text" name="title" placeholder="leave a comment...">
+                <button>leave comment</button>
+            </form>
+            <% if (blog.comments.length === 0){ %>
+                <h3>There are no comments</h3>
+            <% }else{ %>
+                <h3>These are comments</h3>
+                <ul style="margin: 0; padding: 0; list-style-type: none;">
+                    <% blog.comments.forEach(comment => { %>
+                        <li style="display: flex; align-items: center;" class="commentlist">
+                            <a href="/blogs/<%= blog.id %>/comments/<%= comment._id %>/delete" class="thrash"><i class="fa fa-trash"></i></a>
+                            <div style="display: flex;">
+                                <p style="margin: 5px;">
+                                    <%= comment.title %> <span class="comment-likes"><%= comment.likes %></span> <a href="/blogs/<%= blog._id %>/comment/<%= comment._id %>/addlike"><i class="fa fa-thumbs-up thumbs" style="color: green;"></i></a>
+                                </p> 
+                                <p style="margin: 5px;"><%= moment(comment.dateCommented).fromNow() %></p>
+                            </div>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } %>
+        </div>
+    </div>
+    <div class="updatemodal">
+        <form method="POST" action="/blogs/<%= blog.id %>/update">
+            <input type="text" name="title" value="<%= blog.name %>">
+            <textarea name="description" rows="10"><%= blog.description %></textarea>
+            <input type="text" name="imageurl" value="<%= blog.imageurl %>">
+            <button>Update</button>
+        </form>
+        <h1 class="close">x</h1>
+    </div>
+    <script>
+        const openModal = document.querySelector(".updateblog")
+        const closeModal = document.querySelector(".close")
+        const updateModal = document.querySelector(".updatemodal")
+        const body = document.querySelector("body")
+
+        openModal.addEventListener("click", function(event){
+            updateModal.style.display = "block"
+            body.style.backgroundColor = "grey"
+        })
+        closeModal.addEventListener("click", function(event){
+            updateModal.style.display = "none"
+            body.style.backgroundColor = "white"
+        })    
+    </script>
+<%- include("partials/_footer") %>

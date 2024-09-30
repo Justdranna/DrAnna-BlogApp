@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <title>Document</title>
+</head>
+<style>
+     body{
+    margin: 0;
+    padding: 0;
+}
+h2{
+    align-items: center;  
+}
+nav ul{
+    display: flex;
+    background-color: black;
+    justify-content: center;
+    margin: 0;
+    padding: o;
+    list-style-type: none;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 30;
+}
+a{
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+nav ul li{
+    padding: 10px 28px;
+    cursor: pointer;
+}
+nav ul li:hover{
+    background-color: cornflowerblue;
+}
+</style>
+<body>
+    <nav>
+        <ul>
+            <h2 style="color: white;">DrAnna's Blog</h2>
+            <li <% if (path === "/"){ %> style="background-color: cornflowerblue;" <% } %>>
+                <a href="/"><i class="fa fa-home"></i> Home</a>
+            </li>
+            <li>
+                <a href="/about">About</a>
+            </li>
+            <li>
+                <a href="/contact">Contacts</a>
+            </li>
+            <li>
+                <a href="/services">Services</a>
+            </li>
+            <% if (userId){ %>
+                <li>
+                    <a href="/accounts/logout">Logout</a>
+                </li>
+                <li  <% if (path === "/profile"){ %> style="background-color: cornflowerblue;" <% } %>>
+                    <a href="/profile">profile</a>
+                </li>
+            <% }else{ %>
+                <li <% if (path === "/accounts/login"){ %> style="background-color: cornflowerblue;" <% } %>>
+                    <a href="/accounts/login">Login</a>
+                </li>
+                <li <% if (path === "/accounts/register"){ %> style="background-color: cornflowerblue;" <% } %>>
+                    <a href="/accounts/register">Register</a>
+                </li>
+            <% } %>
+        </ul>
+    </nav>
+    <div class="container">
