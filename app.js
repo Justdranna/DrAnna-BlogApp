@@ -39,6 +39,9 @@ const connObj = mongoose.connection
 connObj.on("error", (error) => {
     console.log(error)
 })
+// app.use(mongoConnect.connect({
+//     mongoConnectionStore: connObj
+// }))
 
 app.get("/", (req, res) => {
     res.locals.path = "/"
