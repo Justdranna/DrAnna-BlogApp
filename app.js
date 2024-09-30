@@ -1,4 +1,6 @@
 const express = require("express")
+const dotenv = require("dotenv")
+dotenv.config()
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const logger = require("morgan")
@@ -20,7 +22,7 @@ app.use(express.static(__dirname + "/public"))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(logger("dev"))
 app.use(session({
-    secret: "this is my secret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false
 }))
@@ -32,7 +34,7 @@ app.use((req, res, next) => {
     next()
 })
 
-mongoose.connect("mongodb://127.0.0.1:27017/BlogApp")
+mongoose.connect(process.env.MONGO_URL)
 const connObj = mongoose.connection
 connObj.on("error", (error) => {
     console.log(error)
@@ -286,6 +288,6 @@ app.get("/blogs/:blog_id/comment/:comment_id/addlike", (req, res) => {
 // })
 
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, process.env.HOST, () => {
     console.log("server has started on port 3000")
 })
