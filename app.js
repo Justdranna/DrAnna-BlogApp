@@ -288,6 +288,6 @@ app.get("/blogs/:blog_id/comment/:comment_id/addlike", (req, res) => {
 // })
 
 
-app.listen(process.env.PORT, process.env.HOST, () => {
+app.listen(3000, () => {
     console.log("server has started on port 3000")
 })
